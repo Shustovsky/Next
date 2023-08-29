@@ -20,17 +20,29 @@ You can start editing the page by modifying `app/page.tsx`. The page auto-update
 
 This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
 
-## Learn More
+# Next 13
 
-To learn more about Next.js, take a look at the following resources:
+## Серверные и клиентские компоненты
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+![React components](example-1.webp)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+### Правила вложения
 
-## Deploy on Vercel
+- нельзя импортировать серверный компонент внутри клиентского
+- можно пробрасывать серверные компоненты в клиентские как `children`
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+![Пример страницы](example-2.avif)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Используйте клиентские компоненты когда:
+
+- необходимо использовать хуки
+- когда необходимы обработчики событий на пользовательские действия
+- при использовании браузерного API
+- когда используется классовый компонент
+
+Используйте серверные компоненты, когда:
+
+- вы получаете данные через серверное API
+- когда нужен прямой доступ к ресурсам бэкенда
+- когда используется sensetive информация (ключи API, токены и пр.)
+- когда используются тяжелые зависимости
